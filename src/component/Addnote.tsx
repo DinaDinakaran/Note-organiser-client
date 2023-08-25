@@ -21,6 +21,7 @@ const Addnote :React.FC = () => {
         } 
 
         dispatch(addNote(note));
+
         let localy_stroed :any = localStorage.getItem('user');
         if(localy_stroed){
           let user= JSON.parse(localy_stroed);
@@ -30,9 +31,11 @@ const Addnote :React.FC = () => {
            return alert(result.message)
           }
           alert(result.message)
+          setText("")
+          
         }
        
-        setText("")
+        
         }
     }
     const handlechanges =(e:any)=>{
