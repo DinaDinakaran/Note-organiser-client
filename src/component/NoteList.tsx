@@ -10,7 +10,7 @@ const NoteList :React.FC<any> = ({datas}:any) => {
   return (
     <div className='note__list'>
       {
-        datas.map((note:any)=> <Note key={note.id} note={note}/>)
+        datas.map((note:any,index:number)=> <Note key={index} note={note}/>)
       }
       <Addnote/>
     </div>

@@ -30,8 +30,10 @@ const Addnote :React.FC = () => {
           if(!result.isOk){
            return alert(result.message)
           }
-          alert(result.message)
+          console.log("this is working")
           setText("")
+          alert(result.message)
+          
           
         }
        
