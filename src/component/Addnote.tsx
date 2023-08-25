@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { text } from 'stream/consumers';
 import { useAppdispatch } from './Uitils/Hooks';
 import { addNote } from '../Redux/reducer/NotesReducer';
+import netWorkCall from './Uitils/Network';
 
 
 
@@ -10,7 +11,7 @@ const Addnote :React.FC = () => {
     const dispatch = useAppdispatch()
     const [text,setText]= useState("");
     let chaaractorlength :number = 200
-    const handlesubmit:any = (e:any)=>{
+    const handlesubmit:any = async(e:any)=>{
         if(text.trim().length>0 ){
             let date = new Date();
         let note :any ={
@@ -18,7 +19,19 @@ const Addnote :React.FC = () => {
             date:date.toLocaleDateString(),
             content:text
         } 
+
         dispatch(addNote(note));
+        let localy_stroed :any = localStorage.getItem('user');
+        if(localy_stroed){
+          let user= JSON.parse(localy_stroed);
+          let result = await netWorkCall("POST","/user/addnote",{email:user.email,data:note});
+         // console.log(result)
+          if(!result.isOk){
+           return alert(result.message)
+          }
+          alert(result.message)
+        }
+       
         setText("")
         }
     }

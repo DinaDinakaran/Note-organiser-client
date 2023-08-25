@@ -2,6 +2,7 @@ import React from 'react'
 import {RiDeleteBin4Fill} from "react-icons/ri"
 import { Prop, deleteNote } from '../Redux/reducer/NotesReducer';
 import { useAppdispatch } from './Uitils/Hooks';
+import netWorkCall from './Uitils/Network';
 
 interface note {
     note:Prop
@@ -9,8 +10,8 @@ interface note {
 
 const Note : React.FC<note> = ({note}:note) => {
  const dispatch = useAppdispatch()
-    const handleDelete =(id:number)=>{
-            dispatch(deleteNote(id))
+    const handleDelete =async(id:number)=>{
+            dispatch(deleteNote(id));
     }
   return (
     <div className='note'>
