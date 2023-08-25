@@ -12,6 +12,16 @@ const Note : React.FC<note> = ({note}:note) => {
  const dispatch = useAppdispatch()
     const handleDelete =async(id:number)=>{
             dispatch(deleteNote(id));
+            let localy_stroed :any = localStorage.getItem('user');
+            if(localy_stroed){
+              let user= JSON.parse(localy_stroed);
+              let result = await netWorkCall("POST","/user/deletenote",{email:user.email,id});
+             // console.log(result)
+              if(!result.isOk){
+               return alert(result.message)
+              }
+              alert(result.message)
+            }
     }
   return (
     <div className='note'>
