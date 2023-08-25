@@ -1,11 +1,17 @@
 
+1.the first steps to clone my repository.
+2. Make you sure the terminal directory is The clone repository 
+3. Start typing on " npm i"
 
-## Available Scripts
+for clint side to start a terminal code : "npm start"
 
-In the project directory, you can run:
+for server side to start a server useing : "npm run dev"
 
-### `npm start`
+live demo : https://notes-organiser.netlify.app/signin
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+server api : https://notes-organizer-server.onrender.com
+
+my git links: 
+client : https://github.com/DinaDinakaran/Note-organiser-client
+server:https://github.com/DinaDinakaran/Note-organiser-server
 
