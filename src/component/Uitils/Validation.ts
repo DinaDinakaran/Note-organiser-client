@@ -5,13 +5,13 @@ export const validation = (obj:any)=>{
         if(obj){
             Object.keys(obj).map((key)=>{
                 if(!obj[key]){
-                    alert(obj[key]+"is empty !");
+                    alert(key+" is empty !");
                     return false;
                 }else{
                     if(key=="email"){
-                        console.log('emil')
+                        //console.log('emil')
                         if(!obj[key].match(email)){
-                            alert(obj[key] + " is empty !");
+                            alert(key + "  is empty !");
                             return false;
                         }
                     } 

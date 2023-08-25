@@ -19,7 +19,8 @@ const SignIn :React.FC = () => {
       if(!validation(formvalue)){
         return 
       }
-  
+         if(formvalue.password.length>5){
+
       console.log("submitworks good",formvalue);
       let result = await netWorkCall("POST","/user/signin",formvalue);
       console.log(result)
@@ -31,6 +32,9 @@ const SignIn :React.FC = () => {
        localStorage.setItem("isLogin","true");
        localStorage.setItem("token",result.token);
        navigate("/")
+         }else{
+          alert("password must be more then 5")
+         }
   }
   
     const handlechanges = (ele:any)=>{

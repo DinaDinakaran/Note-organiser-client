@@ -23,15 +23,19 @@ const SignUP :React.FC = () => {
      if(!validation(formvalue)){
        return 
      }
- 
-       console.log("submitworks good",formvalue);
-       let result = await netWorkCall("POST","/user/create",formvalue);
-       console.log(result)
-       if(!result.isOk){
-        return alert(result.message)
-       }
-       alert(result.message)
-      navigate("/signin")
+      if(formvalue.password.length>5){
+        console.log("submitworks good",formvalue);
+        let result = await netWorkCall("POST","/user/create",formvalue);
+        console.log(result)
+        if(!result.isOk){
+         return alert(result.message)
+        }
+        alert(result.message)
+       navigate("/signin") 
+      }else{
+        alert("password must be more then 5")
+      }
+     
    }
    const handlechanges = (ele:any)=>{
        setFormvalue({...formvalue,[ele.target.name]:ele.target.value})
