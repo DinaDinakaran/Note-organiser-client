@@ -3,6 +3,7 @@ import {RiDeleteBin4Fill} from "react-icons/ri"
 import { Prop, deleteNote, updateNote } from '../Redux/reducer/NotesReducer';
 import { useAppdispatch } from './Uitils/Hooks';
 import netWorkCall from './Uitils/Network';
+import { Notification } from './Uitils/Tostify';
 
 interface note {
     note:Prop
@@ -22,9 +23,9 @@ const Note : React.FC<note> = ({note}:note) => {
               let result = await netWorkCall("POST","/user/deletenote",{email:user.email,id});
              // console.log(result)
               if(!result.isOk){
-               return alert(result.message)
+               return Notification(result.isOk,result.message)
               }
-             // alert(result.message)
+              Notification(result.isOk,result.message)
              
             }
     }
@@ -38,9 +39,9 @@ const Note : React.FC<note> = ({note}:note) => {
         let result = await netWorkCall("POST","/user/updatenote",{email:user.email,data:text});
        // console.log(result)
         if(!result.isOk){
-         return alert(result.message)
+         return  Notification(result.isOk,result.message)
         }
-       // alert(result.message)
+       Notification(result.isOk,result.message)
        
       }
        console.log(text)

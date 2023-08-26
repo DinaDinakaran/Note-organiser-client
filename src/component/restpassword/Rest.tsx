@@ -3,6 +3,7 @@ import "./rest.css"
 import { useNavigate, useParams } from 'react-router-dom';
 import { validation} from "../Uitils/Validation";
 import netWorkCall from "../Uitils/Network";
+import { Notification } from '../Uitils/Tostify';
 
 const Rest :React.FC= () => {
     const navigate = useNavigate()
@@ -22,12 +23,12 @@ const Rest :React.FC= () => {
         let result = await netWorkCall("POST","/user/resetpassword/"+params.token,formvalue);
         console.log(result)
         if(!result.isOk){
-         return alert(result.message);
+         return  Notification(result.isOk,result.message)
         }
-        alert(result.message);
+        Notification(result.isOk,result.message)
         navigate("/signin");
       }else{
-        alert("make sure password and confirm password is same");
+        Notification(0,"password must be more then 5")
       }
    
   

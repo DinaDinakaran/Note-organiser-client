@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { validation} from "../Uitils/Validation";
 import netWorkCall from "../Uitils/Network";
 import "./forget.css"
+import { Notification } from '../Uitils/Tostify';
 
 const Forget :React.FC= () => {
     const navigate = useNavigate()
@@ -16,9 +17,9 @@ const Forget :React.FC= () => {
       let result = await netWorkCall("POST","/user/forgetpassword",{email:formvalue});
       console.log(result)
       if(!result.isOk){
-       return alert(result.message);
+       return  Notification(result.isOk,result.message)
       }
-      alert(result.message);
+      Notification(result.isOk,result.message)
       navigate("/signin")
   }
     return (

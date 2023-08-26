@@ -8,12 +8,15 @@ import SignUP from './component/signup/SignUP';
 import SignIn from './component/Signin/SignIn';
 import Forget from './component/forgetpassword/Forget';
 import Rest from './component/restpassword/Rest';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App: React.FC =() =>{
   return (
     <Provider store={store}>
    <div className="App">
+    <ToastContainer/>
       <BrowserRouter>
       <Routes>
         <Route path='*' element={<Main/>} />

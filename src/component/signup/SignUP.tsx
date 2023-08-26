@@ -3,6 +3,7 @@ import { useNavigate ,Link} from 'react-router-dom';
 import { validation} from "../Uitils/Validation";
 import netWorkCall from "../Uitils/Network";
 import "./signup.css"
+import { Notification } from '../Uitils/Tostify';
 
 const SignUP :React.FC = () => {
     const navigate = useNavigate();
@@ -28,12 +29,12 @@ const SignUP :React.FC = () => {
         let result = await netWorkCall("POST","/user/create",formvalue);
         console.log(result)
         if(!result.isOk){
-         return alert(result.message)
+         return  Notification(result.isOk,result.message)
         }
-        alert(result.message)
+        Notification(result.isOk,result.message)
        navigate("/signin") 
       }else{
-        alert("password must be more then 5")
+        Notification(0,"password must be more then 5")
       }
      
    }

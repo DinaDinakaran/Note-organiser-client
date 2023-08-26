@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { validation} from "../Uitils/Validation";
 import netWorkCall from "../Uitils/Network";
 import "./signin.css"
+import { Notification } from '../Uitils/Tostify';
 const SignIn :React.FC = () => {
     const navigate =useNavigate()
     const [formvalue,setFormvalue]= useState({
@@ -25,7 +26,7 @@ const SignIn :React.FC = () => {
       let result = await netWorkCall("POST","/user/signin",formvalue);
       console.log(result)
       if(!result.isOk){
-       return alert(result.message);
+       return  Notification(result.isOk,result.message)
       }
      let jsonfile = JSON.stringify(result.details);
        localStorage.setItem("user",jsonfile);
@@ -33,7 +34,7 @@ const SignIn :React.FC = () => {
        localStorage.setItem("token",result.token);
        navigate("/")
          }else{
-          alert("password must be more then 5")
+          Notification(0,"password must be more then 5")
          }
   }
   
