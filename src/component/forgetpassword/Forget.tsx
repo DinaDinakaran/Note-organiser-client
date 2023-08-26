@@ -26,7 +26,7 @@ const Forget :React.FC= () => {
       <div className='container3'>
       <div className="container__alain">
       <div className="wrapp1">
-         <div className="heading">Rest You Password</div>
+         <div className="heading">Forget You Password</div>
          <form  className="form__container" onSubmit={(e)=>{handleSubmit(e)}}>
              <div className="component">
              <label className="formlable3">Email</label>
